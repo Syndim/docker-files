@@ -25,4 +25,4 @@ jobs:
           context: .
           file: ./appveyor/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/build-env-flutter-rust-android:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/appveyor:latest
