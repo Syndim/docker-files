@@ -15,3 +15,5 @@ RUN echo "[source.crates-io]" >> $HOME/.cargo/config
 RUN echo "replace-with = 'ustc'" >> $HOME/.cargo/config
 RUN echo "[source.ustc]" >> $HOME/.cargo/config
 RUN echo "registry = \"git://mirrors.ustc.edu.cn/crates.io-index\"" >> $HOME/.cargo/config
+RUN echo "[url \"https://ghproxy.com/https://github.com/\"]" >> $HOME/.gitconfig
+RUN echo "        insteadOf = https://github.com/" >> $HOME/.gitconfig
