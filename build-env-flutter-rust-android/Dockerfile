@@ -10,7 +10,7 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 ENV PATH ${PATH}:/root/.cargo/bin
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y python3 python3-pip python3-dev ruby libssl-dev libssl1.1 build-essential pkg-config
+RUN apt-get install -y python3 python3-pip python3-dev ruby libssl-dev build-essential pkg-config
 RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN pip3 install invoke
 RUN gem install bundler
