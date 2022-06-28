@@ -3,6 +3,7 @@ FROM ruby:3.1.2
 USER root
 
 RUN gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y wget build-essential curl
