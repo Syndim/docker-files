@@ -1,4 +1,4 @@
-FROM cirrusci/flutter:stable
+FROM cirrusci/flutter:3.0.5
 
 USER root
 
@@ -6,7 +6,7 @@ RUN yes | sdkmanager "ndk;21.4.7075529"
 RUN yes | sdkmanager "build-tools;30.0.3"
 RUN yes | sdkmanager "platforms;android-31"
 RUN yes | sdkmanager "platforms;android-28"
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y 1.63.0
 ENV PATH ${PATH}:/root/.cargo/bin
 RUN apt-get update
 RUN apt-get upgrade -y

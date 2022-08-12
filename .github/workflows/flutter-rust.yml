@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'master'
+    paths:
+      - 'build-env-flutter-rust-android/**'
 
 jobs:
   docker:
