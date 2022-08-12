@@ -6,8 +6,9 @@ RUN yes | sdkmanager "ndk;21.4.7075529"
 RUN yes | sdkmanager "build-tools;30.0.3"
 RUN yes | sdkmanager "platforms;android-31"
 RUN yes | sdkmanager "platforms;android-28"
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y 1.63.0
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
 ENV PATH ${PATH}:/root/.cargo/bin
+RUN rustup install 1.63.0
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y python3 python3-pip python3-dev ruby libssl-dev build-essential pkg-config
