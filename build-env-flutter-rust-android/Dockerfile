@@ -11,7 +11,8 @@ ENV PATH ${PATH}:/root/.cargo/bin
 RUN rustup install 1.67.0
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y ruby libssl-dev build-essential pkg-config libclang-dev
+RUN apt-get install -y ruby libssl-dev build-essential pkg-config libclang-dev python3-dev python3-pip python3
+RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN gem install bundler
 RUN cargo install just nu
 RUN rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android
