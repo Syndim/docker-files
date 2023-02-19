@@ -12,8 +12,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH=$PATH:/root/.cargo/bin
 
 RUN echo "[source.crates-io]" >> $HOME/.cargo/config
-RUN echo "replace-with = 'ustc'" >> $HOME/.cargo/config
+RUN echo "replace-with = 'tuna'" >> $HOME/.cargo/config
 RUN echo "[source.ustc]" >> $HOME/.cargo/config
-RUN echo "registry = \"git://mirrors.ustc.edu.cn/crates.io-index\"" >> $HOME/.cargo/config
+RUN echo "registry = \"https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git\"" >> $HOME/.cargo/config
 RUN echo "[url \"https://ghproxy.com/https://github.com/\"]" >> $HOME/.gitconfig
 RUN echo "        insteadOf = https://github.com/" >> $HOME/.gitconfig
