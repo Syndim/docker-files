@@ -1,4 +1,4 @@
-FROM cirrusci/flutter:3.7.0
+FROM cirrusci/flutter:3.7.6
 
 USER root
 
@@ -8,7 +8,7 @@ RUN yes | sdkmanager "platforms;android-31"
 RUN yes | sdkmanager "platforms;android-28"
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
 ENV PATH ${PATH}:/root/.cargo/bin
-RUN rustup install 1.67.0
+RUN rustup install 1.68.0
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y ruby libssl-dev build-essential pkg-config libclang-dev python3-dev python3-pip python3
