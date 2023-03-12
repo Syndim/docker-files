@@ -2,7 +2,7 @@ FROM cirrusci/flutter:3.7.6
 
 USER root
 
-RUN yes | sdkmanager "ndk;21.4.7075529"
+RUN yes | sdkmanager "ndk;25.2.9519653"
 RUN yes | sdkmanager "build-tools;30.0.3"
 RUN yes | sdkmanager "platforms;android-31"
 RUN yes | sdkmanager "platforms;android-28"
