@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - 'master'
+    paths:
+      - 'python-rust-alphine/**'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push python-rust
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./python-rust-alpine/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/python-rust:alpine-latest

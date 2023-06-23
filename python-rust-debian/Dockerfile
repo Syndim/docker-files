@@ -1,4 +1,4 @@
-FROM python:3.10.12-bookworm
+FROM debian:bookworm
 
 USER root
 
@@ -6,14 +6,15 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y wget build-essential curl
 
-RUN pip install maturin
+ENV PATH=$PATH:/root/.local/share/rtx/shims
 
-ENV PATH=$PATH:/root/.cargo/bin:/root/.local/bin
+RUN curl https://rtx.pub/rtx-latest-linux-arm64 > /bin/rtx
 
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
-RUN rustup install 1.70.0
-
-RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN rtx install python 3.11.4 3.10.6 3.9.2
+RUN rtx use python@3.11.4
+RUN rtx plugin-add rust https://github.com/asdf-community/asdf-rust.git
+RUN rtx install rust 1.70.0
+RUN rtx use rust@1.70.0
 
 RUN echo "[source.crates-io]" >> $HOME/.cargo/config
 RUN echo "replace-with = 'ustc'" >> $HOME/.cargo/config
@@ -22,4 +23,7 @@ RUN echo "registry = \"sparse+https://mirrors.ustc.edu.cn/crates.io-index/\"" >>
 RUN echo "[url \"https://ghproxy.com/https://github.com/\"]" >> $HOME/.gitconfig
 RUN echo "        insteadOf = https://github.com/" >> $HOME/.gitconfig
 
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install maturin
