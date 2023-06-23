@@ -16,7 +16,7 @@ ENV PATH=$PATH:/root/.local/share/rtx/shims
 ENV RTX_DEBUG=1
 RUN rtx install -v python@3.11 python@3.10 python@3.9
 RUN rtx use python@3.11
-RUN rtx plugin-add rust https://github.com/asdf-community/asdf-rust.git
+RUN rtx plugin add rust https://github.com/asdf-community/asdf-rust.git
 RUN rtx install -v rust@1.70.0
 RUN rtx use rust@1.70.0
 
