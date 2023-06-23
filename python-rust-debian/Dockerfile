@@ -6,10 +6,13 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y wget build-essential curl
 
-ENV PATH=$PATH:/root/.local/share/rtx/shims
 
-RUN curl https://rtx.pub/rtx-latest-linux-arm64 > /bin/rtx
-RUN chmod +x /bin/rtx
+RUN wget -qO - https://rtx.pub/gpg-key.pub | gpg --dearmor | sudo tee /usr/share/keyrings/rtx-archive-keyring.gpg 1> /dev/null
+RUN echo "deb [signed-by=/usr/share/keyrings/rtx-archive-keyring.gpg arch=amd64] https://rtx.pub/deb stable main" | sudo tee /etc/apt/sources.list.d/rtx.list
+RUN sudo apt update
+RUN sudo apt install -y rtx
+
+ENV PATH=$PATH:/root/.local/share/rtx/shims
 
 RUN rtx install python 3.11.4 3.10.6 3.9.2
 RUN rtx use python@3.11.4

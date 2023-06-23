@@ -2,12 +2,9 @@ FROM alpine:latest
 
 USER root
 
-RUN apk add --no-cache wget curl alpine-sdk
+RUN apk add --no-cache wget curl alpine-sdk rtx
 
 ENV PATH=$PATH:/root/.local/share/rtx/shims
-
-RUN curl https://rtx.pub/rtx-latest-linux-arm64 > /bin/rtx
-RUN chmod +x /bin/rtx
 
 RUN rtx install python 3.11.4 3.10.6 3.9.2
 RUN rtx use python@3.11.4
