@@ -8,12 +8,12 @@ RUN apt-get install -y wget build-essential curl
 
 RUN pip install maturin
 
+ENV PATH=$PATH:/root/.cargo/bin:/root/.local/bin
+
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
 RUN rustup install 1.70.0
 
 RUN curl -sSL https://install.python-poetry.org | python3 -
-
-ENV PATH=$PATH:/root/.cargo/bin:/root/.local/bin
 
 RUN echo "[source.crates-io]" >> $HOME/.cargo/config
 RUN echo "replace-with = 'ustc'" >> $HOME/.cargo/config
