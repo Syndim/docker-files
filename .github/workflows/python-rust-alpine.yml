@@ -5,7 +5,7 @@ on:
     branches:
       - 'master'
     paths:
-      - 'python-rust-alphine/**'
+      - 'python-rust-alpine/**'
 
 jobs:
   docker:
