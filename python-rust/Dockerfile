@@ -18,4 +18,5 @@ RUN echo "registry = \"sparse+https://mirrors.ustc.edu.cn/crates.io-index/\"" >>
 RUN echo "[url \"https://ghproxy.com/https://github.com/\"]" >> $HOME/.gitconfig
 RUN echo "        insteadOf = https://github.com/" >> $HOME/.gitconfig
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN pip install maturin
