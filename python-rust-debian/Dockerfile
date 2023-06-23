@@ -11,13 +11,12 @@ RUN echo "deb [signed-by=/usr/share/keyrings/rtx-archive-keyring.gpg arch=amd64]
 RUN apt update
 RUN apt install -y rtx
 
-ENV PATH=$PATH:/root/.local/share/rtx/shims
+ENV PATH=$PATH:/root/.local/share/rtx/shims:/root/.local/bin:/root/.cargo/bin
 
 ENV RTX_DEBUG=1
 RUN rtx install -v python@3.11 python@3.10 python@3.9
 RUN rtx use python@3.11
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
-ENV PATH=$PATH:/root/.cargo/bin
 RUN rustup install 1.70.0
 RUN rustup default 1.70.0
 
@@ -31,4 +30,5 @@ RUN echo "        insteadOf = https://github.com/" >> $HOME/.gitconfig
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-RUN pip install maturin
+RUN pip install maturin[patchelf]
+RUN ln -s ${rtx --log-level info where python}/bin/maturin /bin/maturin
