@@ -2,7 +2,7 @@ FROM alpine:latest
 
 USER root
 
-RUN apk add --no-cache wget curl alpine-sdk rtx musl-dev linux-headers git bash build-base libffi-dev openssl-dev bzip2-dev zlib-dev xz-dev readline-dev sqlite-dev tk-dev patchelf
+RUN apk add --no-cache wget curl alpine-sdk rtx musl-dev linux-headers git bash build-base libffi-dev openssl-dev bzip2-dev zlib-dev xz-dev readline-dev sqlite-dev tk-dev patchelf maturin
 
 ENV PATH=$PATH:/root/.local/share/rtx/shims:/root/.local/bin:/root/.cargo/bin
 
@@ -23,4 +23,3 @@ RUN echo "        insteadOf = https://github.com/" >> $HOME/.gitconfig
 RUN curl -sSL https://install.python-poetry.org | python3 -
 
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-RUN pip install maturin
