@@ -2,7 +2,7 @@ FROM alpine:latest
 
 USER root
 
-RUN apk add --no-cache bash wget curl alpine-sdk rtx git
+RUN apk add --no-cache bash wget curl alpine-sdk rtx git musl-dev linux-headers
 
 ENV PATH=$PATH:/root/.local/share/rtx/shims
 
