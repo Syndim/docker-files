@@ -31,4 +31,4 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install maturin[patchelf]
-RUN ln -s ${rtx --log-level info where python}/bin/maturin /bin/maturin
+RUN ln -s $(rtx --log-level info where python)/bin/maturin /bin/maturin
