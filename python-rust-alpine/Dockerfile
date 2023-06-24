@@ -4,7 +4,7 @@ USER root
 
 RUN apk add --no-cache wget curl alpine-sdk rtx musl-dev linux-headers git bash build-base libffi-dev openssl-dev bzip2-dev zlib-dev xz-dev readline-dev sqlite-dev tk-dev patchelf maturin
 
-ENV PATH=$PATH:/root/.local/share/rtx/shims:/root/.local/bin:/root/.cargo/bin
+ENV PATH=/root/.local/share/rtx/shims:/root/.local/bin:/root/.cargo/bin:$PATH
 
 ENV RTX_DEBUG=1
 RUN rtx install -v python@3.11 python@3.10 python@3.9
