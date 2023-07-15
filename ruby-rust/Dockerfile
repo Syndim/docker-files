@@ -9,7 +9,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y wget build-essential curl
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
 ENV PATH ${PATH}:/root/.cargo/bin
-RUN rustup install 1.68.2
+RUN rustup install 1.71.0
 
 ENV PATH=$PATH:/root/.cargo/bin
 
