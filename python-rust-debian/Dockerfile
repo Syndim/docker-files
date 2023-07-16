@@ -7,6 +7,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y wget build-essential curl git libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
 RUN curl https://rtx.pub/rtx-latest-linux-x64 > /bin/rtx
+RUN chmod +x /bin/rtx
 
 ENV PATH=/root/.local/share/rtx/shims:/root/.local/bin:/root/.cargo/bin:$PATH
 
