@@ -14,9 +14,9 @@ ENV PATH=/root/.local/share/rtx/shims:/root/.local/bin:/root/.cargo/bin:$PATH
 ENV RTX_DEBUG=1
 RUN rtx install -v python@3.11 python@3.10 python@3.9
 RUN rtx use python@3.11
-RUN curl -sSL https://install.python-poetry.org | python3 -
-RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-RUN pip install maturin[patchelf]
+RUN curl -sSL https://install.python-poetry.org | python3.11 -
+RUN pip3.11 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip3.11 install maturin[patchelf]
 RUN ln -s $(rtx --log-level info where python)/bin/maturin /bin/maturin
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
