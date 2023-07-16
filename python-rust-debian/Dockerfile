@@ -28,4 +28,5 @@ RUN echo "registry = \"sparse+https://mirrors.ustc.edu.cn/crates.io-index/\"" >>
 RUN echo "[url \"https://ghproxy.com/https://github.com/\"]" >> $HOME/.gitconfig
 RUN echo "        insteadOf = https://github.com/" >> $HOME/.gitconfig
 
-RUN cargo install maturin
+RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+RUN cargo binstall maturin
