@@ -8,14 +8,16 @@ RUN apt-get install -y wget build-essential curl git libssl-dev zlib1g-dev libbz
 
 RUN curl https://rtx.pub/rtx-latest-linux-x64 > /bin/rtx
 RUN chmod +x /bin/rtx
+RUN echo 'eval "$(/bin/rtx activate bash)"' >> ~/.bashrc
+RUN eval "$(/bin/rtx activate bash)"
 
 ENV PATH=/root/.local/share/rtx/shims:/root/.local/bin:/root/.cargo/bin:$PATH
 
 ENV RTX_DEBUG=1
 RUN rtx install -v python@3.11 python@3.10 python@3.9
 RUN rtx use python@3.11
-RUN curl -sSL https://install.python-poetry.org | python3.11 -
-RUN pip3.11 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN curl -sSL https://install.python-poetry.org | python -
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
 RUN rustup install 1.71.0
