@@ -10,8 +10,8 @@ ENV RTX_DEBUG=1
 RUN rtx install -v python@3.11 python@3.10 python@3.9
 RUN rtx use python@3.11
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain none
-RUN rustup install 1.71.1
-RUN rustup default 1.71.1
+RUN rustup install 1.72.0
+RUN rustup default 1.72.0
 
 RUN echo "[source.crates-io]" >> $HOME/.cargo/config
 RUN echo "replace-with = 'ustc'" >> $HOME/.cargo/config
