@@ -6,6 +6,7 @@ on:
       - 'master'
     paths:
       - 'webrtc-build/**'
+      - '.github/workflows/webrtc-build.yml'
 
 jobs:
   docker:
@@ -25,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./webrtc-build
-          file: ./Dockerfile
+          file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/webrtc-build:latest
