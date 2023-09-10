@@ -24,7 +24,7 @@ jobs:
         name: Build and push webrtc-build
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./webrtc-build/Dockerfile
+          context: ./webrtc-build
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/webrtc-build:latest
