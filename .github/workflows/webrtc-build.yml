@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./webrtc-build
-          file: Dockerfile
+          file: ./webrtc-build/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/webrtc-build:latest
